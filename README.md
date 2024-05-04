@@ -6,7 +6,7 @@ This project aims to develop a machine learning model to detect fraudulent credi
 
 ## Dataset
 
-The dataset can be downloaded from Kaggle. kaggle.com/datasets/mlg-uzlb/creditcardfraud
+The dataset can be downloaded from Kaggle. https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
 ## Steps Taken
 
