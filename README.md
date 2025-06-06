@@ -1,66 +1,100 @@
-# Credit Card Fraud Detection
+
+# Credit Card Fraud Detection Using Machine Learning
 
 ## Overview
 
-This project aims to develop a machine learning model to detect fraudulent credit card transactions. The dataset used in this project contains transactions made by credit cards in September 2013 by European cardholders. It is highly unbalanced, with the positive class (frauds) accounting for 0.172% of all transactions.
+This project focuses on building machine learning models to accurately detect fraudulent credit card transactions. The dataset used includes transactions made by European cardholders in September 2013. A key challenge in this problem is the **high class imbalance**, as fraudulent transactions represent only **0.172%** of the total data.
+
+## Who Will Benefit and Why
+
+* **Financial Institutions**: Can use the model to flag and investigate suspicious transactions in real-time, helping reduce monetary losses.
+* **Data Scientists & Engineers**: Provides hands-on experience with imbalanced classification, model tuning, and evaluation strategies.
+* **Security Analysts**: Can apply the insights to fraud prevention systems and improve alert precision.
 
 ## Dataset
 
-The dataset can be downloaded from Kaggle. https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+The dataset is publicly available on Kaggle:
+👉 [Credit Card Fraud Detection Dataset on Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
 
-## Steps Taken
+* Features V1 to V28 are anonymized principal components obtained through **PCA**.
+* The **'Time'** and **'Amount'** features are original and untransformed.
 
-### Data Preparation:
-The dataset contains only numerical input variables which are the result of a PCA transformation. Features V1 to V28 are the principal components obtained with PCA, while 'Time' and 'Amount' are the original features.
-### Data Splitting: 
-The dataset was split into training and testing sets using an 80/20 ratio.
-### Model Building: 
-Implemented and evaluated the following models:
+---
 
-Logistic Regression
+## Approach
 
-Random Forest
+### 1. Data Preparation
 
-XGBoost
+* All features were already numeric, as the dataset had PCA transformation applied during preprocessing by the dataset authors. No additional dimensionality reduction was performed in this project.
+* Standardized and prepared the dataset for model training.
 
-### Model Evaluation: 
-Evaluated models using accuracy, precision, recall, and F1 score. Used cross-validation to ensure model robustness.
+### 2. Data Splitting
 
-### Parameter Tuning: 
-Used Randomized Search to find the best parameters for the XGBoost model.
+* The dataset was split into **80% training** and **20% testing** to evaluate model generalization.
 
-### Final Model: 
-Selected the XGBoost model with the best parameters for the final prediction.
+### 3. Model Building
 
-## Results
+Three classification models were implemented and tested:
 
-### Logistic Regression:
-Accuracy: 99.92%
-Precision: 87.67%
-Recall: 63.37%
-F1 Score: 73.56%
+* **Logistic Regression**
+* **Random Forest Classifier**
+* **XGBoost Classifier**
 
-### Random Forest:
-Accuracy: 99.95%
-Precision: 91.67%
-Recall: 76.24%
-F1 Score: 83.24%
-### XGBoost:
-Accuracy: 99.95%
-Precision: 92.13%
-Recall: 81.19%
-F1 Score: 86.32%
+### 4. Model Evaluation
 
-### XGBoost (Final Model):
-Accuracy: 99.96%
-Precision: 92.22%
-Recall: 82.18%
-F1 Score: 86.91%
+Models were assessed using the following metrics to capture performance under class imbalance:
+
+* **Accuracy**
+* **Precision**
+* **Recall**
+* **F1 Score**
+
+Cross-validation was used to validate performance robustness across different data subsets.
+
+### 5. Parameter Tuning
+
+* **Randomized Search** was applied to optimize the hyperparameters of the XGBoost model.
+
+### 6. Final Model Selection
+
+* The **XGBoost model with best-tuned parameters** was selected for final evaluation and prediction.
+
+---
+
+## Results and Performance Comparison
+
+| Model               | Accuracy   | Precision  | Recall     | F1 Score   |
+| ------------------- | ---------- | ---------- | ---------- | ---------- |
+| Logistic Regression | 99.92%     | 87.67%     | 63.37%     | 73.56%     |
+| Random Forest       | 99.95%     | 91.67%     | 76.24%     | 83.24%     |
+| XGBoost             | 99.95%     | 92.13%     | 81.19%     | 86.32%     |
+| **Final XGBoost**   | **99.96%** | **92.22%** | **82.18%** | **86.91%** |
+
+### Model Insights
+
+* **Logistic Regression**: High accuracy but limited recall, which may result in missing fraudulent cases.
+* **Random Forest**: Strong performance across all metrics, offering a balanced detection rate.
+* **XGBoost**: Outperformed all other models, particularly in recall and F1 score, indicating better detection of fraudulent transactions.
+
+---
 
 ## Conclusion
 
-The XGBoost model with optimized parameters performed the best among the models tested, achieving an accuracy of 99.96% and an F1 score of 86.91%. This model is recommended for credit card fraud detection tasks due to its high performance.
+The **optimized XGBoost model** demonstrated the best overall performance, achieving:
 
-## Course Information
+* **Accuracy**: 99.96%
+* **F1 Score**: 86.91%
+* **Recall**: 82.18%
 
-This project is part of the Udemy course Machine Learning Projects for Beginners in Python. It demonstrates the application of machine learning techniques to detect fraudulent credit card transactions. https://www.udemy.com/course/machine-learning-projects-for-beginners-in-python/learn/lecture/25516790?start=90#questions
+Its strong balance between identifying fraud (recall) and minimizing false positives (precision) makes it the **most suitable model for credit card fraud detection** in this dataset.
+
+---
+
+## Course Acknowledgement
+
+This project was completed as part of the Udemy course:
+🎓 [Machine Learning Projects for Beginners in Python by Vijay Gadhave](https://www.udemy.com/course/machine-learning-projects-for-beginners-in-python/learn/lecture/25516790?start=90#questions)
+
+It showcases practical techniques in handling real-world fraud detection problems using machine learning.
+
+---
